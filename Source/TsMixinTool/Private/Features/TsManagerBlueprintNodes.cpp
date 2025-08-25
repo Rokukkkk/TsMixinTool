@@ -13,12 +13,7 @@ void UTsManagerBlueprintNodes::RegisterToTsManager(UObject* ContextObject)
 {
 	if (GetDefault<UTsMixinSettings>()->MixinMode != EMixinMode::ManagerMode)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[TsManager] ManagerMode Mode is disabled in project settings."));
-
-#if WITH_EDITOR
-		FMessageDialog::Open(EAppMsgType::Ok, FText::FromString("[TsManager] TsMixinTool is currently in DefaultMode, \"RegisterToTsManager\" node in Blueprint will NOT WORK."));
-#endif
-
+		FFrame::KismetExecutionMessage(TEXT("[TsManager] ManagerMode Mode is disabled in project settings."), ELogVerbosity::Warning);
 		return;
 	}
 
@@ -31,5 +26,4 @@ void UTsManagerBlueprintNodes::RestartProxy(UObject* ContextObject)
 	{
 		ContextObject->GetWorld()->GetGameInstance()->GetSubsystem<UTsManagerSubsystem>()->ReStartJsEnv();
 	}
-	
 }

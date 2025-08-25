@@ -64,7 +64,7 @@ void UTsManagerSubsystem::Deinitialize()
 void UTsManagerSubsystem::ReStartJsEnv()
 {
 	JsEnv.Reset();
-
+	
 	const UTsMixinSettings* Settings = GetDefault<UTsMixinSettings>();
 	if (Settings->bTsDebugMode)
 	{
@@ -73,7 +73,7 @@ void UTsManagerSubsystem::ReStartJsEnv()
 			std::make_unique<puerts::FDefaultLogger>(),
 			8091
 		);
-
+	
 		if (Settings->bWaitForDebugger)
 		{
 			JsEnv->WaitDebugger();

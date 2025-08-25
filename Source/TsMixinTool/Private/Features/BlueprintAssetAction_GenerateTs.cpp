@@ -131,7 +131,7 @@ void FBlueprintAssetAction_GenerateTs::GenerateTsMixin()
 					}
 					else
 					{
-						PlaceholderOverrides += FString::Printf(TEXT("this.bpClass.%s.Add(this.%s.bind(this));"), *PlaceholderName, *PlaceholderName);;
+						PlaceholderOverrides += FString::Printf(TEXT("this.bpObj.%s.Add(this.%s.bind(this));\n"), *PlaceholderName, *PlaceholderName);;
 					}
 				}
 
