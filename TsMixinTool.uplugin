@@ -1,13 +1,12 @@
 {
 	"FileVersion": 3,
-	"FriendlyName": "ts.mixintool",
 	"Version": 1,
 	"VersionName": "1.0",
 	"FriendlyName": "TsMixinTool",
-	"Description": "Helper tool for PuerTS",
-	"Category": "Programming",
+	"Description": "",
+	"Category": "Other",
 	"CreatedBy": "Rokukkkk",
-	"CreatedByURL": "https://github.com/Rokukkkk/TsMixinTool",
+	"CreatedByURL": "",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"CanContainContent": true,
@@ -21,6 +20,7 @@
 			"LoadingPhase": "Default"
 		}
 	],
+	"SupportURL": "",
 	"Plugins": [
 		{
 			"Name": "Puerts",
