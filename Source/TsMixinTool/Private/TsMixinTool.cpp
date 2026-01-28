@@ -10,8 +10,6 @@
 
 void FTsMixinToolModule::StartupModule()
 {
-	GenerateTs.Register();
-
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->RegisterSettings("Project", "Plugins", "TsMixinTool",
@@ -23,8 +21,6 @@ void FTsMixinToolModule::StartupModule()
 
 void FTsMixinToolModule::ShutdownModule()
 {
-	GenerateTs.Unregister();
-
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->UnregisterSettings("Project", "Plugins", "TsMixinTool");

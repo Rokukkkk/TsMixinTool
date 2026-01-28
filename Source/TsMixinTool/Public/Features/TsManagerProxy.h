@@ -11,7 +11,7 @@
  * The proxy bp for TS mixin
  */
 UCLASS(Blueprintable)
-class UTsManagerProxy : public UObject
+class TSMIXINTOOL_API UTsManagerProxy : public UObject
 {
 	GENERATED_BODY()
 
