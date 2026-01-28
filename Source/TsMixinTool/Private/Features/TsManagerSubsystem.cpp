@@ -64,7 +64,7 @@ void UTsManagerSubsystem::Deinitialize()
 void UTsManagerSubsystem::ReStartJsEnv()
 {
 	JsEnv.Reset();
-	
+
 	const UTsMixinSettings* Settings = GetDefault<UTsMixinSettings>();
 	if (Settings->bTsDebugMode)
 	{
@@ -73,7 +73,7 @@ void UTsManagerSubsystem::ReStartJsEnv()
 			std::make_unique<puerts::FDefaultLogger>(),
 			8091
 		);
-	
+
 		if (Settings->bWaitForDebugger)
 		{
 			JsEnv->WaitDebugger();
@@ -103,13 +103,22 @@ UTsManagerProxy* UTsManagerSubsystem::GetProxy()
 
 FString UTsManagerSubsystem::GetBPAssetPath(const UObject* Object)
 {
-	if (const UBlueprintGeneratedClass* BPClass = Cast<UBlueprintGeneratedClass>(Object->GetClass()))
+	if (!Object)
 	{
-		if (const UBlueprint* BP = Cast<UBlueprint>(BPClass->ClassGeneratedBy))
-		{
-			return BP->GetPathName().Replace(TEXT("/Game/"), TEXT(""));
-		}
+		return FString();
 	}
 
-	return "";
+	const UClass* Class = Object->GetClass();
+	FString ClassPath = Class->GetPathName();
+
+	ClassPath.RemoveFromEnd(TEXT("_C"));
+	ClassPath.RemoveFromStart(TEXT("/Game/"));
+
+	int32 DotIndex;
+	if (ClassPath.FindLastChar('.', DotIndex))
+	{
+		ClassPath = ClassPath.Left(DotIndex);
+	}
+
+	return ClassPath;
 }

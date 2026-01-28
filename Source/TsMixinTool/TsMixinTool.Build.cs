@@ -20,7 +20,8 @@ public class TsMixinTool : ModuleRules
 				"CoreUObject",
 				"Engine",
 				"Slate",
-				"SlateCore"
+				"SlateCore",
+				"Settings"
 			]
 		);
 	}
